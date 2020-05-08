@@ -15,7 +15,6 @@ let searchResults = document.querySelector('#search-results')
 searchButton.addEventListener('click', function () {
   let userInput = textBox.value.toLowerCase().trim()
   let wordSearch = sentence.innerText.split(' ')
-
   let found = 0
 
 
@@ -24,44 +23,22 @@ searchButton.addEventListener('click', function () {
     for (let i = 0; i < wordSearch.length; i++) {
       if (wordSearch[i].includes(userInput)) {
         found += 1
-
+      }
+      for (let i = 0; i < wordSearch.length; i++) {
+        if (wordSearch[i].toLowerCase() === textBox.value.toLowerCase()) {
+          wordSearch[i] = '<span class="highlight">' + wordSearch[i] + "</span>";
+          sentence.innerHTML = wordSearch.join(' ');
+        }
       }
       searchResults.innerText = found + " Macthes found!"
-
     }
-
-
-    let s = document.querySelector('input[type="text"]')
-    for (let i = 0; i < wordSearch.length; i++) {
-      if (wordSearch[i].toLowerCase() == s.value.toLowerCase()) {
-        wordSearch[i] = '<span class="highlight">' + wordSearch[i] + "</span>";
-        sentence.innerHTML = wordSearch.join(' ');
-      }
-      else {
-
-      }
-    }
-
-
   } else {
     searchResults.innerText = "No match found."
   }
-
-
 })
 
 
-let s = document.querySelector('input[type="text"]')
-let words = sentence.innerText.split(' ');
-for (var i = 0; i < words.length; i++) {
-  if (words[i].toLowerCase() == s.value.toLowerCase()) {
-    words[i] = '<span class="highlight">' + words[i] + "</span>";
-    sentence.innerHTML = words.join(' ');
-  }
-  else {
 
-  }
-}
 
   // TODO 2: Write an IF statement which determines whether
   // the user-supplied string from #textbox is included in
